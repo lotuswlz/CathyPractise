@@ -4,6 +4,20 @@
     <facet type="Spring" name="Spring">
       <configuration />
     </facet>
+    <facet type="web" name="Web Gradle : ROOT.war">
+      <configuration>
+        <descriptors>
+          <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/src/main/webapp/WEB-INF/web.xml" />
+        </descriptors>
+        <webroots>
+          <root url="file://$MODULE_DIR$/src/main/webapp" relative="/" />
+        </webroots>
+        <sourceRoots>
+          <root url="file://$MODULE_DIR$/src/main/java" />
+          <root url="file://$MODULE_DIR$/src/main/resources" />
+        </sourceRoots>
+      </configuration>
+    </facet>
     <facet type="web" name="Web Gradle : CathyPractise-1.0.war">
       <configuration>
         <descriptors>
@@ -35,6 +49,10 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="TEST" name="Gradle: junit:junit:4.11" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.hamcrest:hamcrest-core:1.3" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: aopalliance:aopalliance:1.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: org.apache.tomcat:tomcat-servlet-api:8.0.18" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: javax.servlet:jstl:1.2" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: log4j:log4j:1.2.17" level="project" />
     <orderEntry type="library" exported="" name="Gradle: org.springframework:spring-webmvc:4.1.4.RELEASE" level="project" />
     <orderEntry type="library" exported="" name="Gradle: org.springframework:spring-beans:4.1.4.RELEASE" level="project" />
     <orderEntry type="library" exported="" name="Gradle: org.springframework:spring-context:4.1.4.RELEASE" level="project" />
@@ -43,9 +61,5 @@
     <orderEntry type="library" exported="" name="Gradle: org.springframework:spring-web:4.1.4.RELEASE" level="project" />
     <orderEntry type="library" exported="" name="Gradle: org.springframework:spring-aop:4.1.4.RELEASE" level="project" />
     <orderEntry type="library" exported="" name="Gradle: commons-logging:commons-logging:1.2" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: aopalliance:aopalliance:1.0" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Gradle: org.apache.tomcat:tomcat-servlet-api:8.0.18" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: javax.servlet:jstl:1.2" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: log4j:log4j:1.2.17" level="project" />
   </component>
 </module>
