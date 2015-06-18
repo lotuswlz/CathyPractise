@@ -1,0 +1,16 @@
+.body-div {
+	width: 270px;
+	height: 480px;
+	background-color:black;
+	display:block;
+	position:absolute;
+}
+
+.my_round {
+    border:2px solid black;
+    border-radius:55px;
+    padding: 5px;
+    font-size: 32px;
+	width:100px;
+	height:100px;
+}
