@@ -14,6 +14,9 @@ dependencies {
     compile 'org.springframework:spring-webmvc:4.1.4.RELEASE'
     compile 'javax.servlet:jstl:1.2'
     compile 'log4j:log4j:1.2.17'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.5.1'
+    compile 'javax.servlet:servlet-api:2.5'
+    compile 'commons-lang:commons-lang:2.6'
     providedCompile 'org.apache.tomcat:tomcat-servlet-api:8.0.18'
     testCompile group: 'junit', name: 'junit', version: '4.11'
 }
@@ -36,4 +39,16 @@ war {
 
 task doPack(type: War, dependsOn: []) {
     archiveName "cathy_practise.war"
+}
+
+task deploy {
+    doLast {
+        ssh.run {
+            session(remotes.appServer) {
+                execute "service tomcat stop; rm -rf /usr/share/tomcat7/webapps/cathy_practise"
+                put from: "${libsDir}/cathy_practise.war", into: "/var/lib/tomcat/webapps/cathy_practise.war"
+                execute "service tomcat start"
+            }
+        }
+    }
 }
