@@ -72,5 +72,5 @@ task stopTomcat(type: Exec) {
 
 task copyWar(type: Copy) {
     from "${libsDir}/cathy_practise.war"
-    into '/usr/share/tomcat8/webapps/cathy_practise.war'
+    into '/usr/share/tomcat8/webapps/'
 }
