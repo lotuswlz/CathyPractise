@@ -41,8 +41,15 @@ task doPack(type: War, dependsOn: []) {
     archiveName "cathy_practise.war"
 }
 
-task deploy(type: Exec) {
-    commandLine "sudo /usr/sbin/tomcat7 stop --info; rm -rf /usr/share/tomcat7/webapps/cathy_practise"
-    commandLine "cp ${libsDir}/cathy_practise.war /usr/share/tomcat7/webapps/cathy_practise.war"
-    commandLine "sudo /usr/sbin/tomcat7 start --info"
+task deploy(type: Exec, dependsOn: 'copyWar') {
+    commandLine "/usr/sbin/tomcat7 start"
+}
+
+task stopTomcat(type: Exec) {
+    commandLine "/usr/sbin/tomcat7 stop"
+}
+
+task copyWar(type: Copy, dependsOn: 'stopTomcat') {
+    from "${libsDir}/cathy_practise.war"
+    into '/usr/share/tomcat7/webapps/cathy_practise.war'
 }
