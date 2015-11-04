@@ -42,7 +42,9 @@ task doPack(type: War, dependsOn: []) {
 }
 
 task deploy(type: Exec, dependsOn: 'copyWar') {
-    commandLine "service tomcat8 start"
+    doLast {
+        commandLine "service tomcat8 start"
+    }
 }
 
 task stopTomcat(type: Exec) {
