@@ -1,9 +1,23 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'org.hidetake:gradle-ssh-plugin:1.1.3'
+        classpath 'com.bmuschko:gradle-tomcat-plugin:2.2.2'
+    }
+}
+
 apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'war'
 apply plugin: 'jetty'
+apply plugin: 'org.hidetake.ssh'
+apply plugin: 'com.bmuschko.tomcat'
+apply plugin: 'com.bmuschko.tomcat-base'
 
-sourceCompatibility = 1.6
 version = '1.0'
 
 repositories {
@@ -19,6 +33,11 @@ dependencies {
     compile 'commons-lang:commons-lang:2.6'
     providedCompile 'org.apache.tomcat:tomcat-servlet-api:8.0.18'
     testCompile group: 'junit', name: 'junit', version: '4.11'
+}
+
+ssh.settings {
+    knownHosts = allowAnyHosts
+    dryRun = false
 }
 
 task createJavaProject << {
@@ -51,7 +70,7 @@ task stopTomcat(type: Exec) {
     commandLine "service tomcat8 stop"
 }
 
-task copyWar(type: Copy, dependsOn: 'stopTomcat') {
+task copyWar(type: Copy) {
     from "${libsDir}/cathy_practise.war"
     into '/usr/share/tomcat8/webapps/cathy_practise.war'
 }
