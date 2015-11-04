@@ -41,10 +41,8 @@ task doPack(type: War, dependsOn: []) {
     archiveName "cathy_practise.war"
 }
 
-task deploy {
-    doLast {
-        execute "/usr/sbin/tomcat7 stop; rm -rf /usr/share/tomcat7/webapps/cathy_practise"
-        put from: "${libsDir}/cathy_practise.war", into: "/usr/share/tomcat7/webapps/cathy_practise.war"
-        execute "/usr/sbin/tomcat7 start"
-    }
+task deploy(type: Exec) {
+    commandLine "/usr/sbin/tomcat7 stop; rm -rf /usr/share/tomcat7/webapps/cathy_practise"
+    commandLine "cp ${libsDir}/cathy_practise.war /usr/share/tomcat7/webapps/cathy_practise.war"
+    commandLine "/usr/sbin/tomcat7 start"
 }
