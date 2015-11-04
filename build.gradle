@@ -43,12 +43,8 @@ task doPack(type: War, dependsOn: []) {
 
 task deploy {
     doLast {
-        ssh.run {
-            session(remotes.appServer) {
-                execute "/usr/sbin/tomcat7 stop; rm -rf /usr/share/tomcat7/webapps/cathy_practise"
-                put from: "${libsDir}/cathy_practise.war", into: "/var/lib/tomcat/webapps/cathy_practise.war"
-                execute "/usr/sbin/tomcat7 start"
-            }
-        }
+        execute "/usr/sbin/tomcat7 stop; rm -rf /usr/share/tomcat7/webapps/cathy_practise"
+        put from: "${libsDir}/cathy_practise.war", into: "/usr/share/tomcat7/webapps/cathy_practise.war"
+        execute "/usr/sbin/tomcat7 start"
     }
 }
