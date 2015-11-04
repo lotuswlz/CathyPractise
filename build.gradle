@@ -42,14 +42,14 @@ task doPack(type: War, dependsOn: []) {
 }
 
 task deploy(type: Exec, dependsOn: 'copyWar') {
-    commandLine "sudo /usr/sbin/tomcat7 start"
+    commandLine "sudo service tomcat8 start"
 }
 
 task stopTomcat(type: Exec) {
-    commandLine "sudo /usr/sbin/tomcat7 stop"
+    commandLine "sudo service tomcat8 stop"
 }
 
 task copyWar(type: Copy, dependsOn: 'stopTomcat') {
     from "${libsDir}/cathy_practise.war"
-    into '/usr/share/tomcat7/webapps/cathy_practise.war'
+    into '/usr/share/tomcat8/webapps/cathy_practise.war'
 }
