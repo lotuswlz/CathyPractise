@@ -42,7 +42,7 @@ task doPack(type: War, dependsOn: []) {
 }
 
 task deploy(type: Exec) {
-    commandLine "/usr/sbin/tomcat7 stop; rm -rf /usr/share/tomcat7/webapps/cathy_practise"
+    commandLine "sudo /usr/sbin/tomcat7 stop; rm -rf /usr/share/tomcat7/webapps/cathy_practise"
     commandLine "cp ${libsDir}/cathy_practise.war /usr/share/tomcat7/webapps/cathy_practise.war"
-    commandLine "/usr/sbin/tomcat7 start"
+    commandLine "sudo /usr/sbin/tomcat7 start"
 }
